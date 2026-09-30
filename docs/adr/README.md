@@ -1,15 +1,19 @@
-# Décisions d'architecture
+# Architecture Decision Records
 
-Ce dossier est volontairement vide de décisions.
+This directory is intentionally empty of Architecture Decision Records (ADRs). An ADR will be added only when a decision made during the project can be supported by evidence and confirmed by the student and, where required, the company.
 
-Un ADR ne sera ajouté que lorsqu'une décision réellement prise pendant le projet pourra être étayée par une preuve ou confirmée par l'étudiant et, si nécessaire, par l'entreprise.
+## Acceptance criteria
 
-Chaque futur ADR devra préciser :
+Each future ADR must document:
 
-1. le contexte réel au moment de la décision ;
-2. les options effectivement considérées ;
-3. la décision et son auteur ou groupe de décision ;
-4. les conséquences observées ;
-5. le statut de validation et les éléments publiables.
+1. the verified context at the time of the decision;
+2. the options that were genuinely considered;
+3. the decision and its responsible author or decision-making group;
+4. the observed consequences and trade-offs;
+5. its validation status and the evidence approved for publication.
 
-Une justification reconstruite après coup ne sera pas présentée comme une décision historique.
+A rationale reconstructed after the project must be identified as a retrospective analysis, not presented as a historical decision.
+
+## Suggested format
+
+Use sequential filenames such as `0001-short-decision-title.md` and include these sections: **Status**, **Context**, **Options considered**, **Decision**, **Consequences**, **Evidence**, and **Publication approval**.

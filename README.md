@@ -1,167 +1,173 @@
-# Module de devis pour traitements organisés en cures
+# Treatment-Cycle Quotation Module
 
-> Portfolio documentaire d'un projet de fin d'études — aucune donnée patient ni aucun code propriétaire.
+> A documentation-first portfolio for a final-year software engineering project. It contains no patient data and no proprietary source code.
 
-## Présentation
+## Overview
 
-Ce dépôt présente un **module web interne de préparation de devis pour des traitements organisés en cures**, réalisé dans le cadre d'un projet de fin d'études de licence à la Faculté des Sciences de Sfax, lors d'un stage chez Clinisys en 2024.
+This repository documents an **internal web module for preparing quotations for treatments organized into cycles**. The work was completed in 2024 as an undergraduate final-year project at the Faculty of Sciences of Sfax during an internship at Clinisys.
 
-Le module s'intègre à une application hospitalière existante. Il accompagne un utilisateur interne depuis la sélection d'un dossier patient jusqu'à la préparation d'un devis comprenant un calendrier prévisionnel et des éléments facturables.
+The module integrates into an existing hospital application. It guides an authorized internal user from patient-record selection through the preparation of a quotation containing a projected treatment schedule and billable items.
 
-Il ne s'agit pas d'un portail patient, d'un dispositif médical, d'un outil de prescription ni d'un système de suivi clinique.
+This project is not a patient portal, medical device, prescription tool, clinical decision-support system, or clinical monitoring system.
 
-## Statut
+## Project status
 
-| Élément | Statut documenté |
-|---|---|
-| Nature | Projet de fin d'études — documentation publique |
-| Périmètre | Front-end intégré à une application existante |
-| Année | 2024 |
-| Validation métier | **À CONFIRMER** |
-| Mise en production | **À CONFIRMER — non revendiquée** |
-| Code source | Non publié — propriété de son titulaire |
-| Données | Aucune donnée réelle publiée |
+| Item | Documented status |
+| --- | --- |
+| Project type | Final-year project; public documentation portfolio |
+| Scope | Full-stack module integrated into an existing hospital application |
+| Year | 2024 |
+| Business acceptance | **To be confirmed** |
+| Production deployment | **To be confirmed; not claimed** |
+| Source code | Not published; owned by its rights holder |
+| Data | No real patient data is published |
 
-## Rôle personnel
+## Problem and objective
 
-Le périmètre personnel exact doit encore être validé par l'encadrement. À partir des éléments techniques disponibles, les contributions envisagées pour cette présentation sont :
+Preparing a treatment quotation requires coordinating administrative information, practitioners, recurring treatment dates, catalog items, quantities, and prices. The module brings those inputs into a guided workflow intended to reduce repetitive entry and provide a clear quotation summary before submission to the application's business services.
 
-- conception et intégration des interfaces de création et de consultation d'un devis ;
-- génération d'un calendrier prévisionnel de cures ;
-- ajout dynamique de catégories d'actes, d'examens et de produits ;
-- calcul des quantités et montants côté interface ;
-- intégration des écrans avec des API REST existantes ;
-- adaptation du passage entre la sélection du patient et le devis.
+## Personal contribution
 
-> **À CONFIRMER :** attribution définitive de chacune de ces contributions, rôle dans les tests et éventuelle participation au backend.
+My confirmed scope covered both backend development and front-end integration:
 
-## Fonctionnalités documentées
+- developing the backend services with C# and .NET;
+- designing and integrating REST endpoints used by the quotation workflow;
+- integrating persistence with SQL Server;
+- designing and integrating quotation creation and lookup interfaces;
+- generating a projected treatment-cycle calendar;
+- dynamically adding procedures, examinations, products, and consumables;
+- calculating quantities and displayed amounts in the interface;
+- connecting patient selection to quotation preparation.
 
-- sélectionner ou reprendre un dossier patient dans le parcours interne ;
-- renseigner les informations générales du devis ;
-- sélectionner les médecins associés ;
-- définir le nombre de cures, leur durée et leur intervalle ;
-- sélectionner les jours utiles et générer les dates prévisionnelles ;
-- ajouter des examens, prestations, actes, produits et consommables ;
-- saisir les quantités et calculer les montants ;
-- transmettre les données à des services applicatifs ;
-- consulter la synthèse d'un devis à partir de son numéro.
+The company source code remains proprietary and is intentionally excluded from this public portfolio.
 
-## Parcours principal
+## Documented capabilities
+
+- Select or resume a patient record within the internal workflow.
+- Enter general quotation information and select associated practitioners.
+- Define the number, duration, interval, and applicable weekdays of treatment cycles.
+- Generate projected treatment dates.
+- Add examinations, services, procedures, products, and consumables.
+- Enter quantities and calculate displayed amounts.
+- Submit prepared data to application services.
+- Retrieve a quotation summary by its identifier.
+
+## Core workflow
 
 ```mermaid
 flowchart LR
-    A[Rechercher ou créer un patient] --> B[Sélectionner le dossier]
-    B --> C[Préremplir le devis]
-    C --> D[Définir les paramètres des cures]
-    D --> E[Générer les dates prévisionnelles]
-    E --> F[Ajouter les éléments facturables]
-    F --> G[Calculer les montants]
-    G --> H[Enregistrer le devis]
-    H --> I[Consulter la synthèse]
+    A[Find or create patient] --> B[Select record]
+    B --> C[Pre-fill quotation]
+    C --> D[Configure treatment cycles]
+    D --> E[Generate projected dates]
+    E --> F[Add billable items]
+    F --> G[Calculate displayed amounts]
+    G --> H[Submit quotation]
+    H --> I[Review summary]
 ```
 
-## Architecture
+## Architecture at a glance
 
-Le dépôt source analysé montre un client web multipage communiquant en JSON avec une API métier séparée. L'implémentation du serveur et le schéma de données ne font pas partie de cette publication.
+The implemented solution combines a multi-page web client with .NET business APIs and SQL Server persistence. Authentication details, the physical database schema, internal endpoints, and deployment infrastructure remain outside this public portfolio.
 
 ```mermaid
 flowchart TB
-    U[Utilisateur interne] --> UI[Interface web multipage]
-    UI -->|Requêtes REST / JSON| API[Services métier externes]
-    API --> DB[(Stockage métier — À CONFIRMER)]
+    U[Authorized internal user] --> UI[Multi-page web interface]
+    UI -->|REST / JSON requests| API[C# / .NET business API]
+    API --> DB[(SQL Server)]
 
-    subgraph Construction du front-end
-        SRC[Gabarits + styles + JavaScript] --> BUILD[Chaîne de construction]
+    subgraph Front-end build
+        SRC[Templates + styles + JavaScript] --> BUILD[Build pipeline]
         BUILD --> UI
     end
 ```
 
-Une présentation plus détaillée est disponible dans [docs/architecture.md](docs/architecture.md).
+See the [detailed architecture](docs/architecture.md) for the inferred components, data flow, and limitations.
 
-## Stack observée
+## Technology stack
 
-- JavaScript, HTML5 et CSS3 ;
-- Handlebars ;
-- Bootstrap et jQuery ;
-- Axios et API REST/JSON ;
-- bibliothèque de manipulation de dates ;
-- Gulp et Git.
+| Area | Observed technologies |
+| --- | --- |
+| Backend | C#, .NET, REST APIs |
+| Database | SQL Server |
+| Languages | JavaScript, HTML5, CSS3 |
+| Templates and UI | Handlebars, Bootstrap, jQuery |
+| Integration | Axios, REST/JSON |
+| Dates | Date manipulation and scheduling libraries |
+| Tooling | Gulp, npm, Git |
 
-Cette stack correspond au socle existant dans lequel le module a été intégré. Les technologies du backend et de la base sont **À CONFIRMER** avant publication.
+The front end was implemented within the existing application foundation, while the module's backend services were developed with C#/.NET and integrated with SQL Server. No proprietary source code or internal configuration is included here.
 
-## Aperçu des interfaces
+## Interface previews
 
-Les visuels ci-dessous sont des **reconstitutions anonymisées à partir de captures du prototype**. Ils utilisent exclusivement des données fictives et ne reproduisent aucun logo, nom de personne, identifiant patient ou élément d'infrastructure.
+The following visuals are **anonymized reconstructions based on prototype screenshots**. They contain only fictitious data and reproduce no patient identity, employee identity, company logo, internal URL, or infrastructure detail.
 
-### Recherche multicritère
+### Multi-criteria search
 
-![Formulaire de recherche avec données fictives](docs/images/patient-search-fictitious.png)
+![Anonymized patient search form with fictitious data](docs/images/patient-search-fictitious.png)
 
-La recherche permet de retrouver un dossier à partir de plusieurs critères administratifs.
+Users can locate a record using multiple administrative search criteria.
 
-### Planification prévisionnelle des cures
+### Projected treatment schedule
 
-![Calendrier de cures avec données fictives](docs/images/cures-calendar-fictitious.png)
+![Projected treatment-cycle calendar with fictitious data](docs/images/cures-calendar-fictitious.png)
 
-L'utilisateur configure le nombre de cures, leur durée, l'intervalle et les jours concernés afin de générer les dates prévisionnelles.
+Users configure the cycle count, duration, interval, and applicable days to generate projected dates.
 
-### Détails du devis
+### Quotation details
 
-![Lignes de devis avec données fictives](docs/images/quote-lines-fictitious.png)
+![Quotation line items with fictitious data](docs/images/quote-lines-fictitious.png)
 
-Les éléments sélectionnés sont regroupés avec leur quantité, leur prix unitaire et leur montant. Les montants présentés sont purement fictifs.
+Selected items are grouped with quantities, unit prices, and displayed amounts. Every amount shown is fictitious.
 
-Les règles appliquées aux illustrations sont documentées dans [docs/images/README.md](docs/images/README.md).
+The publication safeguards are documented in the [illustration guidelines](docs/images/README.md).
 
-## Sécurité et confidentialité
+## Security, privacy, and limitations
 
-Cette documentation ne revendique ni conformité réglementaire, ni sécurité complète. Elle distingue les mécanismes observés des mesures restant à vérifier.
+This portfolio does not claim regulatory compliance or complete application security. Public documentation cannot demonstrate every control present in the private application and its deployment environment.
 
-Principales limites identifiées :
+Known limitations include:
 
-- backend et autorisations serveur non auditables depuis les éléments disponibles ;
-- transfert temporaire de données côté navigateur à améliorer ;
-- enregistrement composé de plusieurs opérations, sans transaction globale démontrée ;
-- validation et gestion des erreurs à renforcer ;
-- absence de tests automatisés dans la copie analysée ;
-- dépendances historiques à auditer et mettre à niveau.
+- backend authorization and server-side validation cannot be audited here;
+- temporary browser-side transfer of workflow data should be hardened;
+- quotation submission appears to require multiple operations, with no demonstrated global transaction;
+- validation, recovery, and user-facing error handling require strengthening;
+- automated test coverage was absent from the original material reviewed for this portfolio;
+- legacy dependencies require a security and compatibility audit.
 
-Voir [docs/security-and-limits.md](docs/security-and-limits.md).
+See [Security and limitations](docs/security-and-limits.md) for the complete assessment.
 
-## Plan d'amélioration
+## Improvement roadmap
 
-1. valider officiellement le périmètre personnel et le statut du projet ;
-2. regrouper l'enregistrement du devis dans une transaction serveur ;
-3. centraliser les échanges avec les services applicatifs ;
-4. renforcer la validation et la gestion des erreurs ;
-5. ajouter des tests sur les dates, les montants et les parcours principaux ;
-6. auditer les dépendances et l'accessibilité ;
-7. documenter une recette métier utilisant uniquement des données fictives.
+1. Submit a quotation through a single transactional server-side operation.
+2. Centralize API access and normalize error handling.
+3. Enforce validation and authorization on the server as the source of truth.
+4. Add automated tests for date generation, amount calculations, API contracts, and critical workflows.
+5. Introduce versioned database migrations and deployment-safe rollback procedures.
+6. Audit dependencies, accessibility, privacy, and browser compatibility.
+7. Document business acceptance scenarios using fictitious data only.
 
-## Perspectives
+Potential future capabilities—quotation history and status, internal notifications, printing, patient-record interoperability, and carefully governed patient services—are perspectives only and are not presented as implemented features.
 
-Les éléments suivants sont des **perspectives, non des fonctionnalités réalisées** : historique et statuts des devis, notifications internes, impression, interopérabilité avec le dossier patient et, après cadrage clinique et juridique, services destinés au patient.
+## Documentation map
 
-## Documentation
+- [Architecture](docs/architecture.md) — inferred components, flows, and target architecture
+- [Security and limitations](docs/security-and-limits.md) — risk boundaries and recommendations
+- [Evidence checklist](docs/evidence-checklist.md) — claims that still require supporting evidence
+- [Architecture Decision Records](docs/adr/README.md) — criteria for publishing verified decisions
+- [Illustration guidelines](docs/images/README.md) — anonymization and publication controls
+- [Proposed GitHub settings](docs/github-settings.md) — repository presentation recommendations
 
-- [Architecture](docs/architecture.md)
-- [Sécurité et limites](docs/security-and-limits.md)
-- [Preuves à réunir](docs/evidence-checklist.md)
-- [Décisions d'architecture](docs/adr/README.md)
-- [Règles pour les illustrations](docs/images/README.md)
-- [Configuration GitHub proposée](docs/github-settings.md)
+## Confidentiality and intellectual property
 
-## Confidentialité et propriété
+This repository contains no company source code, internal endpoint, infrastructure detail, customer or employee information, or real patient data. Names and trademarks remain the property of their respective owners. This personal portfolio is not an official Clinisys publication or product statement.
 
-Ce dépôt ne contient ni code source de l'entreprise, ni URL ou infrastructure interne, ni information sur un client ou un collaborateur, ni donnée patient réelle. Les noms et marques appartiennent à leurs titulaires. Cette présentation personnelle n'est pas une communication officielle de Clinisys.
+## License
 
-## Licence
+The documentation is published under an **all rights reserved** model. It grants no rights to proprietary code, trademarks, or third-party material. See [LICENSE](LICENSE).
 
-Cette documentation est publiée sous le régime **tous droits réservés**. Elle n'accorde aucun droit sur le code, les marques ou les éléments appartenant à des tiers. Voir [LICENSE](LICENSE).
+## Author
 
-## Auteur
-
-Khaled Zouari  
-Licence — Faculté des Sciences de Sfax  
-Projet de fin d'études — 2024
+**Khaled Zouari**<br>
+Undergraduate degree — Faculty of Sciences of Sfax<br>
+Final-year project — 2024

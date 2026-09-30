@@ -1,106 +1,120 @@
-# Architecture du module
+# Module Architecture
 
-## Portée de cette description
+## Scope
 
-Cette page décrit uniquement ce qui peut être déduit des éléments techniques disponibles. Elle ne révèle aucun endpoint, hôte, serveur, client ou composant interne de l'entreprise.
+This page documents the publishable architecture of the treatment-cycle quotation module. It intentionally excludes proprietary source code, internal endpoints, hostnames, infrastructure, credentials, and the physical database schema.
 
-Le module est un front-end multipage intégré à une application hospitalière existante. Il consomme des services métier au format JSON. Le backend, l'authentification serveur, la base et l'infrastructure de déploiement ne sont pas inclus dans ce portfolio.
+The solution is a full-stack module integrated into an existing hospital application. Its multi-page JavaScript interface communicates through REST/JSON with business services developed in C# and .NET, backed by SQL Server.
 
-## Vue contextuelle
+## System context
 
 ```mermaid
 flowchart LR
-    A[Agent habilité] --> M[Module interne de devis]
-    M --> S[Services métier externes]
-    S --> P[(Données patient — système externe)]
-    S --> R[(Référentiels métier)]
-    S --> D[(Devis et cures)]
+    U[Authorized internal user] --> UI[Quotation web module]
+    UI -->|REST / JSON| API[C# / .NET API]
+    API --> DB[(SQL Server)]
+    API --> HIS[Existing hospital services]
 ```
 
-Les types de stockage, les frontières exactes des services et leur hébergement sont **À CONFIRMER**.
+The exact service boundaries, hosting model, authentication infrastructure, and physical schema are deliberately not disclosed.
 
-## Composants front-end
+## Main components
 
 ```mermaid
 flowchart TB
-    NAV[Navigation existante] --> PAT[Parcours patient]
-    PAT --> DEV[Écran de devis]
-    DEV --> CAL[Calcul du calendrier]
-    DEV --> CAT[Sélection des éléments]
-    DEV --> TOT[Calcul des montants]
-    DEV --> HTTP[Client HTTP]
-    HTTP --> API[API métier externe]
-    API --> VIEW[Consultation du devis]
+    NAV[Existing navigation] --> PAT[Patient workflow]
+    PAT --> QUOTE[Quotation interface]
+    QUOTE --> CAL[Schedule generation]
+    QUOTE --> CAT[Billable-item selection]
+    QUOTE --> TOT[Displayed amount calculation]
+    QUOTE --> HTTP[Axios client]
+    HTTP --> API[.NET REST controllers]
+    API --> BL[Business services]
+    BL --> DATA[Data access]
+    DATA --> SQL[(SQL Server)]
+    API --> VIEW[Quotation lookup]
 ```
 
-- **Parcours patient** : sélection ou création d'un dossier dans l'application interne.
-- **Écran de devis** : informations générales, médecins et paramètres des cures.
-- **Calcul du calendrier** : répétition des jours sélectionnés selon la durée et l'intervalle.
-- **Catalogue** : catégories d'éléments facturables chargées depuis des services externes.
-- **Montants** : quantité, prix et total calculés côté interface, à valider côté serveur.
-- **Consultation** : affichage synthétique d'un devis identifié.
+- **Patient workflow:** selects or resumes a record in the existing application.
+- **Quotation interface:** captures general information, practitioners, and treatment-cycle parameters.
+- **Schedule generation:** calculates projected dates from duration, interval, and selected weekdays.
+- **Billable-item selection:** loads procedures, examinations, services, products, and consumables.
+- **Amount calculation:** provides immediate quantity, unit-price, and total feedback in the interface.
+- **REST API:** validates requests and coordinates quotation business operations.
+- **Persistence:** stores approved business data in SQL Server.
+- **Quotation lookup:** retrieves a quotation summary by its identifier.
 
-## Modèle logique déduit
+## Technology mapping
 
-Ce modèle est conceptuel. Il ne représente pas le schéma physique de l'entreprise.
+| Layer | Technologies |
+| --- | --- |
+| Interface | JavaScript, HTML5, CSS3, Handlebars |
+| UI foundation | Bootstrap, jQuery |
+| HTTP integration | Axios, REST/JSON |
+| Front-end build | Gulp, npm |
+| Backend | C#, .NET |
+| Persistence | SQL Server |
+| Version control | Git |
+
+## Conceptual domain model
+
+This model explains the business concepts without reproducing the company's physical database schema.
 
 ```mermaid
 erDiagram
-    PATIENT ||--o{ DEVIS : concerne
-    MEDECIN ||--o{ DEVIS : associe
-    DEVIS ||--o{ CURE : planifie
-    DEVIS ||--o{ LIGNE_DEVIS : contient
-    CURE ||--o{ PRODUIT_CURE : utilise
-    CATALOGUE ||--o{ LIGNE_DEVIS : reference
-    CATALOGUE ||--o{ PRODUIT_CURE : reference
+    PATIENT ||--o{ QUOTATION : concerns
+    PRACTITIONER ||--o{ QUOTATION : associated_with
+    QUOTATION ||--o{ TREATMENT_CYCLE : schedules
+    QUOTATION ||--o{ QUOTATION_LINE : contains
+    TREATMENT_CYCLE ||--o{ CYCLE_PRODUCT : uses
+    CATALOG_ITEM ||--o{ QUOTATION_LINE : references
+    CATALOG_ITEM ||--o{ CYCLE_PRODUCT : references
 ```
 
-Cardinalités, clés, champs et contraintes : **À CONFIRMER** avec une documentation autorisée du backend.
+Cardinalities are illustrative and must not be treated as the proprietary physical schema.
 
-## Flux de préparation
+## Quotation preparation sequence
 
 ```mermaid
 sequenceDiagram
-    actor Agent
-    participant UI as Interface web
-    participant API as Services métier
+    actor User as Authorized user
+    participant UI as Web interface
+    participant API as .NET API
+    participant DB as SQL Server
 
-    Agent->>UI: Sélectionne un patient
-    UI->>API: Demande les informations autorisées
-    API-->>UI: Dossier patient
-    Agent->>UI: Configure le devis et les cures
-    UI->>UI: Génère les dates prévisionnelles
-    Agent->>UI: Ajoute les éléments et quantités
-    UI->>UI: Calcule les montants affichés
-    Agent->>UI: Valide
-    UI->>API: Transmet le devis
-    API-->>UI: Résultat ou erreur
+    User->>UI: Select patient record
+    UI->>API: Request authorized information
+    API->>DB: Retrieve required data
+    DB-->>API: Business data
+    API-->>UI: Authorized patient context
+    User->>UI: Configure quotation and cycles
+    UI->>UI: Generate projected dates
+    User->>UI: Add items and quantities
+    UI->>UI: Calculate displayed amounts
+    User->>UI: Submit quotation
+    UI->>API: Send validated request
+    API->>DB: Persist quotation data
+    API-->>UI: Return result or structured error
 ```
 
-## Choix techniques observés
+## Architectural boundaries
 
-L'utilisation de JavaScript, Handlebars, Bootstrap, jQuery et Gulp est vérifiable dans le socle analysé. Elle s'explique principalement par l'intégration dans une application existante. La décision personnelle de choisir ces technologies est **À CONFIRMER** ; elle ne doit pas être revendiquée sans preuve.
+- The server must remain the source of truth for authorization, prices, final amounts, and consistency rules.
+- Client-side calculations are usability aids and require server-side verification.
+- Sensitive patient information must be minimized in browser state and logs.
+- Multi-step persistence should be protected by an appropriate transaction boundary.
+- Error responses must avoid exposing internal implementation or sensitive data.
 
-## Limites architecturales
-
-- logique d'interface, calcul et accès réseau fortement couplés ;
-- plusieurs opérations nécessaires pour enregistrer un même devis ;
-- contrat et validation serveur non disponibles ;
-- état transféré entre pages côté navigateur ;
-- tests automatisés absents des éléments fournis.
-
-## Architecture cible proposée
-
-Cette cible constitue une recommandation, pas une réalisation du PFE :
+## Recommended evolution
 
 ```mermaid
 flowchart LR
-    UI[Interface] --> V[Validation locale]
-    V --> C[Client HTTP centralisé]
-    C --> A[Endpoint agrégat du devis]
-    A --> S[Validation et autorisation serveur]
-    S --> T[Transaction métier]
-    T --> DB[(Stockage)]
+    UI[Web interface] --> V[Client validation]
+    V --> C[Centralized API client]
+    C --> A[Quotation aggregate endpoint]
+    A --> S[Server validation and authorization]
+    S --> T[Business transaction]
+    T --> DB[(SQL Server)]
 ```
 
-Le serveur devrait rester la source de vérité pour les autorisations, tarifs, montants finaux et règles de cohérence.
+Recommended next steps include a centralized API client, explicit DTO validation, transactional quotation submission, versioned database migrations, automated API and business-rule tests, structured observability, and documented rollback procedures.

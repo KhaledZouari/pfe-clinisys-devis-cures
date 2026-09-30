@@ -1,42 +1,41 @@
-# Configuration GitHub proposée
+# Recommended GitHub Configuration
 
-> À appliquer uniquement après confirmation explicite de la création publique.
+## Repository description
 
-## Description
+> Full-stack portfolio documenting a treatment-cycle quotation module built with .NET, SQL Server, JavaScript, and Handlebars.
 
-Documentation d'un module interne de préparation de devis pour des traitements organisés en cures — projet de fin d'études, 2024.
-
-## Topics
+## Recommended topics
 
 ```text
 portfolio
 final-year-project
 healthcare-software
 hospital-information-system
+dotnet
+csharp
+sql-server
 javascript
 handlebars
 rest-api
 technical-documentation
 ```
 
-Les topics faisant directement référence à l'entreprise ou à la chimiothérapie sont reportés jusqu'à validation de leur usage public.
+## Main-branch protection
 
-## Protection de `main`
+- Require a pull request before merging when collaborators are involved.
+- Require resolved conversations before merging.
+- Block force pushes and branch deletion.
+- Require applicable checks to pass.
 
-- pull request obligatoire avant fusion ;
-- au moins une approbation si un réviseur est disponible ;
-- conversations résolues avant fusion ;
-- force-push et suppression interdits ;
-- branche à jour avant fusion si cette règle ne bloque pas inutilement le dépôt individuel.
+## Repository security
 
-## Sécurité du dépôt
+- Enable secret scanning and push protection where available.
+- Keep security alerts private.
+- Review installed GitHub application permissions.
+- Never upload proprietary source, internal configuration, or authentic business data.
 
-- activer secret scanning ;
-- activer push protection lorsque la fonction est disponible ;
-- conserver les alertes de sécurité privées ;
-- ne pas activer Dependabot tant qu'aucune dépendance logicielle n'est publiée ;
-- vérifier les droits des applications GitHub installées.
+## Presentation
 
-## Visibilité et mise en avant
-
-Le dépôt ne sera rendu public et ne sera épinglé sur le profil qu'après validation explicite du propriétaire du compte.
+- Pin the repository only while its claims and visuals remain approved for publication.
+- Keep the description, topics, CV, and profile README aligned.
+- Review all links and images after every documentation update.

@@ -1,48 +1,48 @@
-# Liste des preuves à réunir
+# Publication Evidence Checklist
 
-## Autorisations de publication
+This checklist separates confirmed technical facts from claims that still require documentary or organizational approval.
 
-- [ ] accord écrit autorisant la mention publique de Clinisys ;
-- [ ] validation du résumé public et de l'intitulé du projet ;
-- [ ] confirmation des noms de technologies pouvant être publiés ;
-- [ ] autorisation distincte pour toute marque, logo ou illustration ;
-- [ ] confirmation qu'aucune clause de confidentialité n'interdit ce portfolio.
+## Confirmed project information
 
-## Preuves académiques et professionnelles
+- [x] Final-year project completed in 2024
+- [x] Full-stack contribution to the quotation module
+- [x] Backend development with C# and .NET
+- [x] REST integration and SQL Server persistence
+- [x] Frontend using JavaScript, Handlebars, Bootstrap, jQuery, Axios, and Gulp
+- [x] Anonymized reconstructed illustrations using fictitious data
+- [x] No proprietary company source code published
 
-- [ ] attestation de stage ;
-- [ ] dates et durée officielles ;
-- [ ] intitulé figurant sur la convention ou le rapport ;
-- [ ] établissement, diplôme et année ;
-- [ ] validation de l'encadrant académique ou professionnel, sans publier son nom sans accord.
+## Publication authorization
 
-## Attribution du travail personnel
+- [ ] Written authorization to mention the company publicly, where required
+- [ ] Approval of the public project summary and title
+- [ ] Confirmation that confidentiality obligations permit this portfolio
+- [ ] Separate authorization for any future trademark, logo, or company-provided asset
 
-- [ ] liste des fonctionnalités conçues personnellement ;
-- [ ] liste des fonctionnalités développées personnellement ;
-- [ ] responsabilités de test et de documentation ;
-- [ ] distinction entre socle fourni et contribution personnelle ;
-- [ ] rôle éventuel dans le backend et la base ;
-- [ ] éléments de suivi : tickets, journal de stage ou commits partageables sous forme de synthèse.
+## Academic and professional evidence
 
-## État et validation du projet
+- [ ] Internship certificate and official dates
+- [ ] Project title from the internship agreement or report
+- [ ] Institution, degree, and academic year
+- [ ] Supervisor validation where required, without publishing personal details without consent
 
-- [ ] statut réel : prototype, démonstrateur, recette, préproduction ou production ;
-- [ ] scénarios de recette exécutés ;
-- [ ] résultats de tests documentés ;
-- [ ] retours métier ou d'encadrement pouvant être cités ;
-- [ ] métriques calculées et méthode de mesure ;
-- [ ] limites connues validées.
+## Personal attribution
 
-## Preuves techniques publiables
+- [x] Backend contribution identified
+- [x] Frontend integration contribution identified
+- [ ] Detailed list of personally implemented features supported by publishable evidence
+- [ ] Testing and documentation responsibilities confirmed
+- [ ] Clear distinction between the existing application foundation and new module work
+- [ ] Sanitized summaries of tickets, internship notes, or commits where publication is authorized
 
-- [ ] architecture générale anonymisée validée ;
-- [ ] technologies backend et stockage, si leur divulgation est autorisée ;
-- [ ] décisions réellement prises par l'étudiant ;
-- [ ] diagrammes entièrement recréés ;
-- [ ] jeu de données de démonstration totalement fictif ;
-- [ ] contrôle des images et de leurs métadonnées.
+## Project status
 
-## Règle de rédaction
+- [ ] Verified status: prototype, demonstration, acceptance, pre-production, or production
+- [ ] Business acceptance scenarios and results
+- [ ] Test results approved for publication
+- [ ] Publishable stakeholder feedback
+- [ ] Any metrics supported by a documented measurement method
 
-Une affirmation non accompagnée d'une preuve partageable ou d'une validation reste marquée **À CONFIRMER**. Aucune métrique ne sera estimée ou inventée.
+## Rule for public claims
+
+Do not estimate or invent metrics. A statement that lacks shareable evidence or required approval must be identified as unverified or omitted from public documentation.
