@@ -140,7 +140,6 @@ Les éléments suivants sont des **perspectives, non des fonctionnalités réali
 - [Décisions d'architecture](docs/adr/README.md)
 - [Règles pour les illustrations](docs/images/README.md)
 - [Configuration GitHub proposée](docs/github-settings.md)
-- [Proposition de profil GitHub](PROFILE_PROPOSAL.md)
 
 ## Confidentialité et propriété
 
