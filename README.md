@@ -148,7 +148,7 @@ Ce dépôt ne contient ni code source de l'entreprise, ni URL ou infrastructure 
 
 ## Licence
 
-Le choix d'une licence documentaire est **À CONFIRMER**. Dans l'intervalle, aucun droit de réutilisation n'est accordé au-delà de ce que prévoit la loi applicable. Voir [LICENSE](LICENSE).
+Cette documentation est publiée sous le régime **tous droits réservés**. Elle n'accorde aucun droit sur le code, les marques ou les éléments appartenant à des tiers. Voir [LICENSE](LICENSE).
 
 ## Auteur
 
