@@ -90,18 +90,29 @@ Une présentation plus détaillée est disponible dans [docs/architecture.md](do
 
 Cette stack correspond au socle existant dans lequel le module a été intégré. Les technologies du backend et de la base sont **À CONFIRMER** avant publication.
 
-## Captures et démonstration
+## Aperçu des interfaces
 
-Aucune capture réelle n'est publiée actuellement.
+Les visuels ci-dessous sont des **reconstitutions anonymisées à partir de captures du prototype**. Ils utilisent exclusivement des données fictives et ne reproduisent aucun logo, nom de personne, identifiant patient ou élément d'infrastructure.
 
-Les futures illustrations devront :
+### Recherche multicritère
 
-- utiliser exclusivement des données fictives ;
-- porter visiblement la mention « DONNÉES FICTIVES » ;
-- être recréées sans logo, nom de produit ou élément interne non autorisé ;
-- être contrôlées pour retirer leurs métadonnées.
+![Formulaire de recherche avec données fictives](docs/images/patient-search-fictitious.png)
 
-Les emplacements prévus sont décrits dans [docs/images/README.md](docs/images/README.md).
+La recherche permet de retrouver un dossier à partir de plusieurs critères administratifs.
+
+### Planification prévisionnelle des cures
+
+![Calendrier de cures avec données fictives](docs/images/cures-calendar-fictitious.png)
+
+L'utilisateur configure le nombre de cures, leur durée, l'intervalle et les jours concernés afin de générer les dates prévisionnelles.
+
+### Détails du devis
+
+![Lignes de devis avec données fictives](docs/images/quote-lines-fictitious.png)
+
+Les éléments sélectionnés sont regroupés avec leur quantité, leur prix unitaire et leur montant. Les montants présentés sont purement fictifs.
+
+Les règles appliquées aux illustrations sont documentées dans [docs/images/README.md](docs/images/README.md).
 
 ## Sécurité et confidentialité
 
