@@ -4,11 +4,17 @@
 
 ## Overview
 
-This repository documents an **internal web module for preparing quotations for treatments organized into cycles**. The work was completed in 2024 as an undergraduate final-year project at the Faculty of Sciences of Sfax during an internship at Clinisys.
+This repository documents an **internal web module for preparing quotations for
+treatments organized into cycles**. The work was completed in 2024 as an
+undergraduate final-year project at the Faculty of Sciences of Sfax during an
+internship at Clinisys.
 
-The module integrates into an existing hospital application. It guides an authorized internal user from patient-record selection through the preparation of a quotation containing a projected treatment schedule and billable items.
+The module integrates into an existing hospital application. It guides an
+authorized internal user from patient-record selection through the preparation
+of a quotation containing a projected treatment schedule and billable items.
 
-This project is not a patient portal, medical device, prescription tool, clinical decision-support system, or clinical monitoring system.
+This project is not a patient portal, medical device, prescription tool,
+clinical decision-support system, or clinical monitoring system.
 
 ## Project status
 
@@ -24,7 +30,11 @@ This project is not a patient portal, medical device, prescription tool, clinica
 
 ## Problem and objective
 
-Preparing a treatment quotation requires coordinating administrative information, practitioners, recurring treatment dates, catalog items, quantities, and prices. The module brings those inputs into a guided workflow intended to reduce repetitive entry and provide a clear quotation summary before submission to the application's business services.
+Preparing a treatment quotation requires coordinating administrative
+information, practitioners, recurring treatment dates, catalog items,
+quantities, and prices. The module brings those inputs into a guided workflow
+intended to reduce repetitive entry and provide a clear quotation summary before
+submission to the application's business services.
 
 ## Personal contribution
 
@@ -39,7 +49,8 @@ My confirmed scope covered both backend development and front-end integration:
 - calculating quantities and displayed amounts in the interface;
 - connecting patient selection to quotation preparation.
 
-The company source code remains proprietary and is intentionally excluded from this public portfolio.
+The company source code remains proprietary and is intentionally excluded from
+this public portfolio.
 
 ## Documented capabilities
 
@@ -68,7 +79,10 @@ flowchart LR
 
 ## Architecture at a glance
 
-The implemented solution combines a multi-page web client with .NET business APIs and SQL Server persistence. Authentication details, the physical database schema, internal endpoints, and deployment infrastructure remain outside this public portfolio.
+The implemented solution combines a multi-page web client with .NET business
+APIs and SQL Server persistence. Authentication details, the physical database
+schema, internal endpoints, and deployment infrastructure remain outside this
+public portfolio.
 
 ```mermaid
 flowchart TB
@@ -82,7 +96,8 @@ flowchart TB
     end
 ```
 
-See the [detailed architecture](docs/architecture.md) for the inferred components, data flow, and limitations.
+See the [detailed architecture](docs/architecture.md) for the inferred
+components, data flow, and limitations.
 
 ## Technology stack
 
@@ -96,11 +111,24 @@ See the [detailed architecture](docs/architecture.md) for the inferred component
 | Dates | Date manipulation and scheduling libraries |
 | Tooling | Gulp, npm, Git |
 
-The front end was implemented within the existing application foundation, while the module's backend services were developed with C#/.NET and integrated with SQL Server. No proprietary source code or internal configuration is included here.
+The front end was implemented within the existing application foundation, while
+the module's backend services were developed with C#/.NET and integrated with
+SQL Server. No proprietary source code or internal configuration is included
+here.
+
+## Runtime evidence
+
+This public repository is documentation-only and contains no runnable company
+application. Its visual evidence consists of the explicitly labeled, anonymized
+reconstructions below. They illustrate the documented workflow; they are not
+presented as new captures from an executable public release.
 
 ## Interface previews
 
-The following visuals are **anonymized reconstructions based on prototype screenshots**. They contain only fictitious data and reproduce no patient identity, employee identity, company logo, internal URL, or infrastructure detail.
+The following visuals are **anonymized reconstructions based on prototype
+screenshots**. They contain only fictitious data and reproduce no patient
+identity, employee identity, company logo, internal URL, or infrastructure
+detail.
 
 ### Multi-criteria search
 
@@ -112,19 +140,24 @@ Users can locate a record using multiple administrative search criteria.
 
 ![Projected treatment-cycle calendar with fictitious data](docs/images/cures-calendar-fictitious.png)
 
-Users configure the cycle count, duration, interval, and applicable days to generate projected dates.
+Users configure the cycle count, duration, interval, and applicable days to
+generate projected dates.
 
 ### Quotation details
 
 ![Quotation line items with fictitious data](docs/images/quote-lines-fictitious.png)
 
-Selected items are grouped with quantities, unit prices, and displayed amounts. Every amount shown is fictitious.
+Selected items are grouped with quantities, unit prices, and displayed amounts.
+Every amount shown is fictitious.
 
-The publication safeguards are documented in the [illustration guidelines](docs/images/README.md).
+The publication safeguards are documented in the [illustration
+guidelines](docs/images/README.md).
 
 ## Security, privacy, and limitations
 
-This portfolio does not claim regulatory compliance or complete application security. Public documentation cannot demonstrate every control present in the private application and its deployment environment.
+This portfolio does not claim regulatory compliance or complete application
+security. Public documentation cannot demonstrate every control present in the
+private application and its deployment environment.
 
 Known limitations include:
 
@@ -135,7 +168,8 @@ Known limitations include:
 - automated test coverage was absent from the original material reviewed for this portfolio;
 - legacy dependencies require a security and compatibility audit.
 
-See [Security and limitations](docs/security-and-limits.md) for the complete assessment.
+See [Security and limitations](docs/security-and-limits.md) for the complete
+assessment.
 
 ## Improvement roadmap
 
@@ -147,7 +181,10 @@ See [Security and limitations](docs/security-and-limits.md) for the complete ass
 6. Audit dependencies, accessibility, privacy, and browser compatibility.
 7. Document business acceptance scenarios using fictitious data only.
 
-Potential future capabilities—quotation history and status, internal notifications, printing, patient-record interoperability, and carefully governed patient services—are perspectives only and are not presented as implemented features.
+Potential future capabilities—quotation history and status, internal
+notifications, printing, patient-record interoperability, and carefully governed
+patient services—are perspectives only and are not presented as implemented
+features.
 
 ## Documentation map
 
@@ -160,14 +197,18 @@ Potential future capabilities—quotation history and status, internal notificat
 
 ## Confidentiality and intellectual property
 
-This repository contains no company source code, internal endpoint, infrastructure detail, customer or employee information, or real patient data. Names and trademarks remain the property of their respective owners. This personal portfolio is not an official Clinisys publication or product statement.
+This repository contains no company source code, internal endpoint,
+infrastructure detail, customer or employee information, or real patient data.
+Names and trademarks remain the property of their respective owners. This
+personal portfolio is not an official Clinisys publication or product statement.
 
 ## License
 
-The documentation is published under an **all rights reserved** model. It grants no rights to proprietary code, trademarks, or third-party material. See [LICENSE](LICENSE).
+The documentation is published under an **all rights reserved** model. It grants
+no rights to proprietary code, trademarks, or third-party material. See
+[LICENSE](LICENSE).
 
 ## Author
 
-**Khaled Zouari**<br>
-Undergraduate degree — Faculty of Sciences of Sfax<br>
+**Khaled Zouari**<br> Undergraduate degree — Faculty of Sciences of Sfax<br>
 Final-year project — 2024
